@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:gov_exams/core/constants/index.dart';
-import 'package:gov_exams/widgets/drawer/model/drawer_model.dart';
 import 'package:kartal/kartal.dart';
+import '../../core/constants/index.dart';
+import 'model/drawer_model.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({
@@ -22,9 +22,13 @@ class DrawerMenu extends StatelessWidget {
         : Scaffold(
             backgroundColor: ColorConstants.white,
             body: Container(
-              height: context.height,
+              height: context.sized.height,
               decoration: const BoxDecoration(
-                gradient: ColorConstants.drawerMenuGradient,
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [ColorConstants.blue, ColorConstants.indigo],
+                ),
               ),
               child: SafeArea(
                 child: Column(
@@ -67,7 +71,7 @@ class DrawerMenu extends StatelessWidget {
                           (item) {
                             return TextButton(
                               onPressed: () =>
-                                  context.navigateToPage(item.menuScreen),
+                                  context.route.navigateToPage(item.menuScreen),
                               style: TextButton.styleFrom(
                                 foregroundColor: const Color(0x44000000),
                               ),
